@@ -5,7 +5,7 @@ import Editar from './Editar'
 const ListadoPlatos = ({ listaPlatosDB, setController }) => {
     const [modal, setmodal] = useState(false)
     const [itemEdicion, setitemEdicion] = useState({})
-    const handleDelete = (id) => {
+    const handledDelete = (id) => {
         deletePlato(id)
             .then(res => {
                 console.log(res)
@@ -13,7 +13,7 @@ const ListadoPlatos = ({ listaPlatosDB, setController }) => {
             })
     }
 
-    const handleEdit = (item) => {
+    const handledEdit = (item) => {
         setitemEdicion(item)
         setmodal(true)
     }
@@ -36,8 +36,8 @@ const ListadoPlatos = ({ listaPlatosDB, setController }) => {
                             <td>{item.tipo}</td>
                             <td>{item.ingredientes}</td>
                             <td>
-                                <button className='btn btn-warning m-lg-2' onClick={()=>handleEdit(item)}>Editar</button>
-                                <button className='btn btn-danger ' onClick={() => handleDelete(item.id)}>Eliminar</button>
+                                <button className='btn btn-warning m-lg-2' onClick={()=>handledEdit(item)}>Editar</button>
+                                <button className='btn btn-danger ' onClick={() => handledDelete(item.id)}>Eliminar</button>
                                 
                             </td>
                         </tr>

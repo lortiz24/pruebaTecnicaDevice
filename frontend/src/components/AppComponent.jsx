@@ -1,5 +1,5 @@
 import React, { useState,useEffect   } from 'react'
-import Formulario from './Formulario'
+import Formulario from './CrearPlato'
 import getPlatos from "../helpers/getPlatos"
 import ListadoPlatos from './ListadoPlatos'
 const AppComponent = () => {

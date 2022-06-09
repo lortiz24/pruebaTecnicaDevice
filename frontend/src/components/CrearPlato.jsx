@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import createPlato from '../helpers/createPlato';
+
 const Formulario = ({ setController }) => {
     const [platoForm, setplatoForm] = useState({
         nombre: "",
@@ -8,9 +9,9 @@ const Formulario = ({ setController }) => {
         ingredientes: ""
     })
 
-    const handleChange = (e) => setplatoForm({ ...platoForm, [e.target.name]: e.target.value });
+    const handledChange = (e) => setplatoForm({ ...platoForm, [e.target.name]: e.target.value });
 
-    const handleSubmit = async(e) => {
+    const handledSubmit = async(e) => {
         e.preventDefault()
         if(platoForm.nombre.trim().length===0) {
             alert("No puede enviar campos vacios")
@@ -47,13 +48,13 @@ const Formulario = ({ setController }) => {
     }
     return (
         <div className='row '>
-            <form onSubmit={handleSubmit} className="form-group" >
+            <form onSubmit={handledSubmit} className="form-group" >
                 <input
                     className="form-control mb-2"
                     name="nombre"
                     type="text"
                     placeholder="Nombre del plato"
-                    onChange={handleChange}
+                    onChange={handledChange}
                     value={platoForm.nombre}
                 />
                 <input
@@ -61,7 +62,7 @@ const Formulario = ({ setController }) => {
                     name="precio"
                     type="text"
                     placeholder="Precio del plato"
-                    onChange={handleChange}
+                    onChange={handledChange}
                     value={platoForm.precio}
                 />
                 <input
@@ -69,7 +70,7 @@ const Formulario = ({ setController }) => {
                     name="tipo"
                     type="text"
                     placeholder="Tipo de plato"
-                    onChange={handleChange}
+                    onChange={handledChange}
                     value={platoForm.tipo}
                 />
                 <input
@@ -77,11 +78,13 @@ const Formulario = ({ setController }) => {
                     name="ingredientes"
                     type="text"
                     placeholder="Ingredientes principales"
-                    onChange={handleChange}
+                    onChange={handledChange}
                     value={platoForm.ingredientes}
                 />
                 <button className='btn btn-primary'>Guardar</button>
             </form>
+
+           
         </div>
     )
 }
