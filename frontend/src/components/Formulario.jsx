@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-
-const Formulario = ({ setPlato }) => {
+import createPlato from '../helpers/createPlato';
+const Formulario = ({ setController }) => {
     const [platoForm, setplatoForm] = useState({
         nombre: "",
         precio: "",
@@ -10,7 +10,7 @@ const Formulario = ({ setPlato }) => {
 
     const handleChange = (e) => setplatoForm({ ...platoForm, [e.target.name]: e.target.value });
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault()
         if(platoForm.nombre.trim().length===0) {
             alert("No puede enviar campos vacios")
@@ -28,11 +28,25 @@ const Formulario = ({ setPlato }) => {
             alert("No puede enviar campos vacios")
             return
         }
-        setPlato(platoForm)
+        createPlato(platoForm)
+            .then(res=>{
+                setController(true)
+                setplatoForm({
+                    nombre: "",
+                    precio: "",
+                    tipo: "",
+                    ingredientes: ""
+                })
+                console.log(res)
+            })
+            .catch(err=>{
+                
+                console.log(err)
+            })
 
     }
     return (
-        <div className='row col-5'>
+        <div className='row '>
             <form onSubmit={handleSubmit} className="form-group" >
                 <input
                     className="form-control mb-2"

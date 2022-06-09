@@ -28,10 +28,10 @@ export const getPlato = async( req: Request , res: Response ) => {
 }
 
 export const createPlato = async( req: Request , res: Response ) => {
-    console.log("==================================================================")
+    //console.log("==================================================================")
 
     const { body } = req;
-    console.log(body);
+    //console.log(body);
     try {
         
         const existePlato = await Plato.findOne({
